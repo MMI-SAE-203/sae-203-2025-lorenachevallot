@@ -1,1 +1,28 @@
 @import "tailwindcss";
+@import "tailwindcss/utilities";
+
+@import "tailwindcss";
+
+@theme {
+    --font-sans: "Inter", sans-serif;
+    --font-mono: "Arvo", monospace;
+    --font-serif: "Montserrat", serif;
+}
+
+@layer base {
+    body {
+        @apply font-sans text-base leading-normal;
+    }
+
+    h1 {
+        @apply text-4xl font-mono lg:text-6xl;
+    }
+
+    h2 {
+        @apply text-2xl font-mono lg:text-4xl;
+    }
+
+    h3 {
+        @apply text-xl font-sans font-bold my-4;
+    }
+}

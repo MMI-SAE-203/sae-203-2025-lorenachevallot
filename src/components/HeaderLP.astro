@@ -1,0 +1,73 @@
+---
+import headerImage from "../assets/webp/image_paysage_header.webp";
+import Logo from "../assets/svg/logo.svg";
+import Menu from "../assets/svg/element_menu.svg";
+import Rechercher from "../assets/svg/element_loupe.svg";
+---
+
+<header class="relative w-full h-screen bg-cover bg-center text-white">
+    <div class="absolute inset-0 bg-black/50"></div>
+
+    <div
+        class="absolute top-0 left-0 w-full flex items-center justify-between p-6"
+    >
+        <img src={Logo.src} alt="logo Cinemagny" class="w-15" />
+        <div class="flex gap-4">
+            <button class="p-2">
+                <img src={Rechercher.src} alt="search" class="w-8 h-8 invert" />
+            </button>
+            <button class="p-2">
+                <img src={Menu.src} alt="menu" class="w-10 h-10 invert" />
+            </button>
+        </div>
+    </div>
+
+    <nav
+        class="hidden absolute top-20 right-6 bg-white text-black shadow-lg rounded-lg p-4"
+    >
+        <ul class="flex flex-col space-y-2">
+            <li>
+                <a href="/programmation" class="hover:text-primary"
+                    >Programmation</a
+                >
+            </li>
+            <li>
+                <a href="/billetterie" class="hover:text-primary">Billetterie</a
+                >
+            </li>
+            <li><a href="/" class="hover:text-primary">Infos pratiques</a></li>
+            <li><a href="/" class="hover:text-primary">Invités</a></li>
+            <li><a href="/" class="hover:text-primary">Activités</a></li>
+            <li>
+                <a href="/ecologie" class="hover:text-primary"
+                    >Écoresponsabilité</a
+                >
+            </li>
+            <li><a href="/a-propos" class="hover:text-primary">À Propos</a></li>
+            <li><a href="/contact" class="hover:text-primary">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div
+        class="absolute inset-0 flex flex-col items-center justify-center text-center px-6"
+    >
+        <h1 class="font-sans font-light text-5xl">CINEMAGNY</h1>
+        <h2 class="font-sans text-lg md:text-2xl mt-2">
+            Le cinéma réinventé, au cœur de la nature
+        </h2>
+        <button
+            class="border border-white px-6 py-3 mt-6 text-xs hover:bg-white hover:text-black transition"
+        >
+            Du 12 au 15 novembre 2025
+        </button>
+    </div>
+
+    <div class="absolute inset-0 -z-10">
+        <img
+            src={headerImage.src}
+            alt="paysage vosges"
+            class="w-full h-full object-cover"
+        />
+    </div>
+
+</header>
