@@ -1,0 +1,30 @@
+---
+import { getInvitesById } from "../../backend/backend.mjs";
+
+const props = Astro.props;
+
+let invites = await getInvitesById(props.invites.id);
+---
+
+<template>
+    <div
+        class="relative w-80 sm:w-96 bg-white shadow-lg rounded-lg overflow-hidden p-4"
+    >
+        
+        <div class="absolute top-4 left-4">
+            <div class="w-8 h-[2px] bg-black"></div>
+            <div class="h-8 w-[2px] bg-black mt-1"></div>
+        </div>
+
+        <img
+            src="/path/to/image.png"
+            alt="Portrait"
+            class="w-full rounded-lg shadow-md"
+        />
+
+        <div class="p-4 text-center">
+            <h2 class="text-lg font-semibold text-gray-900">Nom de la personne</h2>
+            <p class="text-gray-600">Titre / Description</p>
+        </div>
+    </div>
+</template>

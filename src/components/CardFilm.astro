@@ -1,0 +1,31 @@
+---
+import { getFilmById } from "../../backend/backend.mjs";
+import { formatDate } from "../../backend/backend.mjs";
+
+const props = Astro.props;
+let film = await getFilmById(props.film.id);
+
+let dateHeure = formatDate(film.date_projection);
+---
+
+<div class="bg-gray-200 shadow-lg rounded-lg w-full">
+    <img
+        class="w-full h-96 object-cover"
+        src={film.affiche}
+        alt={`Affiche de ${film.titre}`}
+    />
+
+    <div class="p-4">
+        <h3 class="(--font-serif) font-semibold">{film.titre}</h3>
+        <p class="text-md font-semibold (--font-serif) mt-1">
+            {dateHeure.date}
+        </p>
+        <p class="text-md font-semibold (--font-serif) mt-1">
+            {dateHeure.heure}
+        </p>
+
+        <ul class="mt-4 text-md text-black space-y-1">
+            {film.genre.map((genre: any) => <li>{genre}</li>)}
+        </ul>
+    </div>
+</div>

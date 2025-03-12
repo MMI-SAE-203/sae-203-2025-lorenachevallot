@@ -7,6 +7,10 @@
     --font-sans: "Inter", sans-serif;
     --font-mono: "Arvo", monospace;
     --font-serif: "Montserrat", serif;
+
+    --color-green: oklch(80.55% 0.1183 127.58);
+    --color-gray: oklch(0.967 0.003 264.542);
+    --color-blue: oklch(78.82% 0.0533 140.74);
 }
 
 @layer base {
@@ -24,5 +28,15 @@
 
     h3 {
         @apply text-xl font-sans font-bold my-4;
+    }
+}
+
+@layer components {
+    .noscroll {
+        overflow: hidden;
+    }
+
+    .black {
+        @apply bg-black
     }
 }

@@ -1,0 +1,12 @@
+---
+import CardFilm from "./CardFilm.astro";
+
+const props = Astro.props;
+const films = props.films;
+---
+
+<div
+    class="flex w-full overflow-x-scroll gap-4 justify-center items-center min-h-screen"
+>
+    {films.map((film: any) => <CardFilm film={film} />)}
+</div>

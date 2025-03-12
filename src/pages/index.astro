@@ -1,16 +1,24 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ButtonPrincipal from "../components/ButtonPrincipal.astro";
+import Card from "../components/Card.astro";
+import imagerealisateurs from "../assets/webp/image_realisateurs.webp";
+import ButtonArrow from "../components/ButtonArrow.astro";
+import imagesensibilisation from "../assets/webp/image_sensibilisation.webp";
+import imgHero from "../assets/webp/image_paysage_header.webp";
+
+const hero = {
+	title: "CINEMAGNY",
+	subtitle: "Le cinéma réinventé, au cœur de la nature",
+	button: "Du 12 au 15 novembre 2025",
+	imgHero: imgHero.src,
+};
 ---
 
-<Layout header="accueil">
-	<article class="pr-16 md:px-8 lg:px-16 py-10 bg-white">
-		<!-- 
-      1) Contenant 'relative' pour positionner des éléments décoratifs si besoin
-      2) max-w-3xl pour limiter la largeur
-      3) mx-auto pour centrer horizontalement
-    -->
-		<div class="relative max-w-3xl mx-auto">
-			<h3 class=" md:text-2xl font-bold leading-tight mb-4">
+<Layout hero={hero}>
+	<article class="flex-col gap-10 flex items-center justify-center">
+		<div class="w-full pr-16">
+			<h3 class="md:text-2xl font-bold leading-tight mb-4">
 				Bienvenue sur le site officiel du festival CINEMAGNY!
 			</h3>
 			<p class="text-base md:text-lg leading-relaxed">
@@ -20,8 +28,120 @@ import Layout from "../layouts/Layout.astro";
 				expérience inoubliable dans un cadre naturel et exceptionnel des
 				Vosges du <span class="font-bold">12 au 16 novembre 2025</span>.
 				Consultez notre programme, explorez nos valeurs et réservez vos
-				billets dès aujourd'hui pour ne rien manquer !
+				billets dès aujourd'hui pour ne rien manquer!
 			</p>
 		</div>
-	</article>
-</Layout>
+		<ButtonPrincipal>billetterie</ButtonPrincipal>
+		<article>
+			<Card
+				><h2 slot="title">Une Programmation Riche et Originale</h2>
+				<p slot="content">
+					Le festival CINEMAGNY se distingue par la variété et
+					l’originalité de sa programmation. Vous y découvrirez des
+					longs et courts métrages, des documentaires et des films
+					d’animation, tous choisis pour leur singularité. L’accent
+					est mis sur le cinéma indépendant et émergent, mettant en
+					lumière des réalisateurs prometteurs. Le festival propose
+					également des projections exclusives ainsi que des
+					rétrospectives dédiées à des figures emblématiques du
+					cinéma, offrant ainsi un regard frais et inspirant sur le 7ᵉ
+					art.
+				</p>
+				<ButtonArrow slot="button">Voir la programmation</ButtonArrow
+				></Card
+			>
+
+			<Card>
+				<h2 slot="title">Un Lieu de Rencontres et d’Échanges</h2>
+				<p slot="content">
+					CINEMAGNY est bien plus qu’un simple festival de cinéma.
+					C’est un lieu d’échanges entre le public et les
+					professionnels du cinéma. Les festivaliers auront
+					l’opportunité de participer à des ateliers et des
+					conférences animés par des experts, découvrant ainsi les
+					coulisses de la création cinématographique. Des séances de
+					questions-réponses avec les réalisateurs permettront
+					également d’enrichir l’expérience en offrant des moments
+					privilégiés de dialogue et de partage. Le festival valorise
+					également les talents locaux, renforçant les liens avec la
+					culture régionale.
+				</p>
+				<img
+					src={imagerealisateurs.src}
+					slot="img"
+					alt="image des réalisateurs"
+				/>
+			</Card>
+
+			<Card>
+				<h2 slot="title">
+					Un Festival Engagé pour l’Environnement et l’Éducation
+				</h2>
+				<p slot="content">
+					CINEMAGNY se veut aussi un événement écoresponsable. Nous
+					mettons un point d’honneur à réduire notre empreinte
+					écologique en utilisant des matériaux recyclés et en
+					encourageant les transports verts pour accéder au festival.
+					Cette démarche s’accompagne d’une sensibilisation à la
+					durabilité, avec des films et des initiatives dédiés à
+					l’écologie. Le festival possède également une forte
+					dimension pédagogique, proposant des conférences et des
+					ateliers pour permettre à chacun d’approfondir ses
+					connaissances du cinéma et de son industrie.
+				</p>
+				<img
+					src={imagesensibilisation.src}
+					slot="img"
+					alt="image des réalisateurs"
+				/>
+			</Card>
+		</article>
+		<div class="relative inline-block text-left">
+    <!-- Bouton Filtrer -->
+    <button id="filter-btn" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition flex items-center gap-2">
+        Filtrer
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+    </button>
+
+    <!-- Menu déroulant (caché par défaut) -->
+    <div id="filter-menu" class="absolute right-0 mt-2 w-48 bg-white border border-gray-300 shadow-lg rounded-md hidden">
+        <div class="p-2">
+            <!-- Filtrer par Genre -->
+            <label class="block text-sm font-medium text-gray-700">Genre</label>
+            <select class="w-full p-2 border rounded-md">
+                <option value="">Tous</option>
+                <option value="action">Action</option>
+                <option value="drama">Drame</option>
+                <option value="comedy">Comédie</option>
+            </select>
+        </div>
+
+        <div class="p-2">
+            <!-- Filtrer par Date -->
+            <label class="block text-sm font-medium text-gray-700">Date</label>
+            <input type="date" class="w-full p-2 border rounded-md" />
+        </div>
+
+        <div class="p-2">
+            <!-- Filtrer par Langue -->
+            <label class="block text-sm font-medium text-gray-700">Langue</label>
+            <select class="w-full p-2 border rounded-md">
+                <option value="">Toutes</option>
+                <option value="fr">Français</option>
+                <option value="en">Anglais</option>
+                <option value="es">Espagnol</option>
+            </select>
+        </div>
+
+        <!-- Bouton Appliquer -->
+        <div class="p-2 border-t">
+            <button class="w-full px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition">
+                Appliquer
+            </button>
+        </div>
+    </div>
+</div>
+	</article></Layout
+>
