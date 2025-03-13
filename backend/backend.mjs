@@ -1,5 +1,5 @@
 import PocketBase from "pocketbase";
-const pb = new PocketBase("http://127.0.0.1:8090");
+const pb = new PocketBase("https://pb-sae-203.lorena-chevallot.fr:443")
 pb.autoCancellation(false);
 
 export async function superAuth() {
@@ -73,8 +73,22 @@ export async function getActivitiesByAnimatorId(id) {
 
 export async function getActivitiesByAnimatorNom(nom) {
     await superAuth();
-    const records = await pb.collection("Activite").getFullList({
-        filter: `invite.nom = '${nom}'`,
+    let records = await pb.collection("Activite").getFullList({
+        expand: "invite",
+    });
+    records = records.filter((record) => record.expand.invite.nom === nom);
+    pb.authStore.clear();
+    return records;
+}
+
+export async function getAnimatorInvited() {
+    await superAuth();
+    let records = await pb.collection("Invite").getFullList({
+        filter: `role = 'animateur'`,
+    });
+    records = records.map(record => {
+        record.photo = pb.files.getURL(record, record.photo);
+        return record;
     });
     pb.authStore.clear();
     return records;
@@ -102,9 +116,33 @@ export function formatDate(date) {
     return { date: dateString, heure: timeString };
 }
 
-export async function getCollection(collection) {
+export async function getFilteredCollectionItems(collectionName, filtre, valeurFiltre) {
     await superAuth();
-    const records = await pb.collection(collection).getFullList();
+    const records = await pb.collection(collectionName).getFullList({
+        filter: `${filtre} = '${valeurFiltre}'`,
+    });
+    pb.authStore.clear();
+    return records;
+}
+
+export async function getFilmByGenre(genre) {
+    await superAuth();
+    let records = await pb.collection("Film").getFullList();
+    records = records.filter((record) => record.genre[0] === genre || record.genre[1] === genre || record.genre[2] === genre);
+    pb.authStore.clear();
+    return records;
+}
+
+export async function getFilmByInvite(id) {
+    await superAuth();
+    let records = await pb.collection("Film").getFullList({
+        expand: "invite",
+        filter: `invite.id = '${id}'`,
+    });
+    records = records.map(record => {
+        record.affiche = pb.files.getURL(record, record.affiche);
+        return record;
+    });
     pb.authStore.clear();
     return records;
 }

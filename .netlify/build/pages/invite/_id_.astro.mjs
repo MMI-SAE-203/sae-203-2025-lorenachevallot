@@ -1,0 +1,60 @@
+import { e as createComponent, f as createAstro, i as renderComponent, r as renderTemplate, m as maybeRenderHead, h as addAttribute } from '../../chunks/astro/server_BqO5gSP-.mjs';
+import 'kleur/colors';
+import 'html-escaper';
+import { b as getInvitesById, c as getFilmByInvite, d as getActivitiesByAnimatorNom, f as formatDate } from '../../chunks/backend_zbxt_nIs.mjs';
+import { $ as $$Layout } from '../../chunks/Layout_Dk5XpXzN.mjs';
+export { renderers } from '../../renderers.mjs';
+
+const $$Astro = createAstro();
+const $$id = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
+  Astro2.self = $$id;
+  const id = Astro2.params.id;
+  Astro2.props;
+  let invite = await getInvitesById(id);
+  let films = await getFilmByInvite(id);
+  let activites = await getActivitiesByAnimatorNom(invite.nom);
+  activites = activites.map((activite) => ({
+    ...activite,
+    date: formatDate(activite.date)
+  }));
+  const hero = {
+    title: invite.nom + " " + invite.prenom
+  };
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "hero": hero }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<section class="max-w-6xl mx-auto py-16 px-6"> <div class="flex flex-col md:flex-row items-start gap-10"> <img${addAttribute(invite.photo, "src")}${addAttribute(`Photo de ${invite.prenom} ${invite.nom}`, "alt")} class="w-64 h-64 object-cover rounded-lg shadow-md mx-auto md:mx-0"> <div class="w-full"> <h2 class="text-4xl font-bold text-gray-800 mb-6 text-center md:text-left"> ${invite.prenom} ${invite.nom} </h2> <p class="text-gray-700 text-lg leading-relaxed"> ${invite.biographie} </p> </div> </div> </section> ${invite.role === "animateur" && renderTemplate`<section class="max-w-6xl mx-auto py-12 px-6 bg-(--color-blue)"> <h3 class="text-3xl font-bold text-black mb-8 border-l-4 border-black pl-4">
+Rôle d'animateur
+</h3> <p class="text-gray-700 text-lg mb-10 max-w-4xl"> ${invite.prenom} ${invite.nom} anime des projections et des
+                    discussions autour des films du festival. Les animateurs
+                    jouent un rôle essentiel dans l'expérience du festival en
+                    facilitant les échanges entre le public et les créateurs.
+</p> ${invite.programme_special && renderTemplate`<div class="mb-12 max-w-4xl pl-4 border-l-4 border-amber-400"> <h4 class="text-xl font-bold text-black mb-3">
+Programme spécial
+</h4> <p class="text-black">${invite.programme_special}</p> </div>`} <h4 class="text-2xl font-bold text-black mb-6">
+Activités animées
+</h4> ${activites && activites.length > 0 ? renderTemplate`<div class="space-y-8"> ${activites.map((activite) => renderTemplate`<div class="bg-white p-6 border-l-4 border-black"> <h5 class="font-bold text-xl text-black mb-3"> ${activite.titre} </h5> ${activite.description && renderTemplate`<p class="text-black mb-5"> ${activite.description} </p>`} <div class="flex flex-wrap gap-3 mb-4"> ${activite.date && renderTemplate`<div class="inline-flex items-center text-black"> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path> </svg> ${activite.date.date} </div>`} ${activite.lieu && renderTemplate`<div class="inline-flex items-center text-black"> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path> </svg> ${activite.lieu} </div>`} ${activite.heure && renderTemplate`<div class="inline-flex items-center text-black"> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path> </svg> ${activite.date.date} </div>`} </div> ${activite.participants && activite.participants.length > 0 && renderTemplate`<div class="mt-4"> <h6 class="font-medium text-black mb-2">
+Participants:
+</h6> <div class="flex flex-wrap gap-2"> ${activite.participants.map(
+    (participant) => renderTemplate`<span class="px-3 py-1 bg-gray-100 text-black rounded-lg"> ${participant} </span>`
+  )} </div> </div>`} </div>`)} </div>` : renderTemplate`<p class="text-gray-600 italic">
+Aucune activité spécifique enregistrée pour cet
+                        animateur.
+</p>`} </section>`}${invite.role !== "animateur" && renderTemplate`<section class="max-w-6xl mx-auto py-12 px-6"> <h3 class="text-3xl font-bold text-black mb-10 border-l-4 border-black pl-4">
+Films associés
+</h3> <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"> ${films.map((film) => renderTemplate`<div${addAttribute(film.id, "id")}> <div class="overflow-hidden rounded-lg mb-4"> <img${addAttribute(film.affiche, "src")}${addAttribute(`Affiche de ${film.titre}`, "alt")} class="w-full h-60 object-cover"> </div> <h4 class="text-xl font-bold text-black mb-3"> ${film.titre} </h4> <p class="text-black mb-3">${film.description}</p> <div class="flex items-center text-black"> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path> </svg> ${film.date_projection} </div> </div>`)} </div> </section>`}<div class="max-w-6xl mx-auto py-12 px-6 text-center"> <a href="/activites" class="inline-block bg-black text-white py-3 px-6 rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-300">
+Découvrir les autres activités
+</a> </div> ` })}`;
+}, "C:/Users/loren/Documents/GitHub/sae-203-2025-lorenachevallot/src/pages/invite/[id].astro", void 0);
+
+const $$file = "C:/Users/loren/Documents/GitHub/sae-203-2025-lorenachevallot/src/pages/invite/[id].astro";
+const $$url = "/invite/[id]";
+
+const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+    __proto__: null,
+    default: $$id,
+    file: $$file,
+    url: $$url
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const page = () => _page;
+
+export { page };

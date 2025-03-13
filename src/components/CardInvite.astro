@@ -34,7 +34,7 @@ let invite = await getInvitesById(props.invites.id);
         <button
             class="mt-4 md:mt-6 lg:mt-8 px-4 py-2 md:px-6 md:py-2.5 lg:px-8 lg:py-3 bg-black hover:bg-(--color-turquoise) hover:text-black text-white font-sans uppercase font-medium text-sm md:text-base lg:text-lg rounded-md transition-colors duration-300 w-full md:w-auto"
         >
-            En savoir plus
+            <a href=`/invite/${invite.id}`> En savoir plus </a>
         </button>
     </div>
 </article>

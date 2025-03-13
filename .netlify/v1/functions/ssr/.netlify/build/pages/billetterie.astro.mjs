@@ -1,0 +1,52 @@
+import { e as createComponent, i as renderComponent, r as renderTemplate, m as maybeRenderHead } from '../chunks/astro/server_BqO5gSP-.mjs';
+import 'kleur/colors';
+import 'html-escaper';
+import { $ as $$Layout } from '../chunks/Layout_Dk5XpXzN.mjs';
+export { renderers } from '../renderers.mjs';
+
+const $$Billetterie = createComponent(($$result, $$props, $$slots) => {
+  const hero = {
+    title: "Billetterie"
+  };
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "hero": hero }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<section class="py-12 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto"> <h1 class="text-3xl font-bold text-center mb-6">
+Réservez Vos Billets Dès Maintenant !
+</h1> <p class="text-center mb-8">
+Ne manquez pas l’opportunité de vivre une expérience
+            cinématographique unique au cœur du festival CINEMAGNY. Réservez vos
+            billets dès maintenant.
+</p> <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"> <!-- Pass 1 --> <div class="border rounded-lg shadow-lg p-6 flex flex-col justify-between"> <div> <h3 class="font-bold text-xl mb-2">Pass Journée</h3> <p>
+Accès journalier à toutes les projections et événements.
+</p> </div> <button class="mt-4 bg-(--color-turquoise) text-black font-semibold rounded px-4 py-2 hover:bg-blue-700 transition">
+Acheter
+</button> </div> <div class="border rounded-lg shadow-lg p-6 flex flex-col justify-between"> <div> <h3 class="font-bold text-xl mb-2">Pass 3 Jours</h3> <p>
+Accès prioritaire au festival pendant 3 jours
+                        consécutifs.
+</p> </div> <button class="mt-4 bg-(--color-turquoise) text-black font-semibold rounded px-4 py-2 hover:bg-blue-700 transition">
+Acheter
+</button> </div> <div class="border rounded-lg shadow-lg p-6 flex flex-col justify-between"> <div> <h3 class="font-bold text-xl mb-2">Pass 5 Jours</h3> <p>
+Accès complet pendant les 5 jours du festival avec
+                        conférences et rencontres exclusives.
+</p> </div> <button class="mt-4 bg-(--color-turquoise) text-black font-semibold rounded px-4 py-2 hover:bg-blue-700 transition">
+Acheter
+</button> </div> <!-- Instructions de réservation et conditions --> <div> <h2 class="text-2xl font-semibold mb-4">Comment réserver ?</h2> <ol class="space-y-2"> <li>Sélectionnez votre pass.</li> <li>Remplissez vos informations personnelles.</li> <li>Effectuez le paiement sécurisé en ligne.</li> <li>Recevez vos billets par e-mail.</li> </ol> </div> <div class="mr-2"> <h2 class="text-2xl font-semibold mb-4">
+Conditions d'Annulation et Remboursement
+</h2> <p>
+Tous les billets peuvent être annulés et remboursés jusqu’à
+                    48 heures avant l'événement.
+</p> </div> <div> <h2 class="text-2xl font-semibold">Une question ?</h2> <p>
+Écrivez-nous à : <a href="mailto:contact@cinemagny.com" class="text-blue-600">contact@cinemagny.com</a> </p> </div> </div> </section> ` })}`;
+}, "C:/Users/loren/Documents/GitHub/sae-203-2025-lorenachevallot/src/pages/billetterie.astro", void 0);
+
+const $$file = "C:/Users/loren/Documents/GitHub/sae-203-2025-lorenachevallot/src/pages/billetterie.astro";
+const $$url = "/billetterie";
+
+const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+    __proto__: null,
+    default: $$Billetterie,
+    file: $$file,
+    url: $$url
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const page = () => _page;
+
+export { page };

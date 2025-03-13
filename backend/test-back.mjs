@@ -85,7 +85,7 @@ console.log("==========================================");
 
 try {
 
-    const records = await getActivitiesByAnimatorNom("Masson");
+    const records = await getActivitiesByAnimatorNom("Lenoir");
     console.log("activities by animator nom", records);
 } catch (error) {
     console.error("error", error);
@@ -113,3 +113,6 @@ try {
 } catch (error) {
     console.error("error", error);
 }
+
+console.log("==========================================");
+
