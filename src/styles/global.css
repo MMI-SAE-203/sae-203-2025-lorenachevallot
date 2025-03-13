@@ -11,6 +11,7 @@
     --color-green: oklch(80.55% 0.1183 127.58);
     --color-gray: oklch(0.967 0.003 264.542);
     --color-blue: oklch(78.82% 0.0533 140.74);
+    --color-turquoise: oklch(74.71% 0.0568 166.31);
 }
 
 @layer base {

@@ -25,6 +25,6 @@ pnpm-debug.log*
 
 backend/pocketbase/pocketbase
 backend/pocketbase/pocketbase.exe
-backend/pocketbase/pb_data/auxiliary.db-wal
-backend/pocketbase/pb_data/auxiliary.db-wal
-backend/pocketbase/pb_data/data.db-wal
+# backend/pocketbase/pb_data/auxiliary.db-wal
+# backend/pocketbase/pb_data/auxiliary.db-wal
+# backend/pocketbase/pb_data/data.db-wal

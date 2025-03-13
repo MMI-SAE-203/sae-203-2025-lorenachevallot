@@ -31,14 +31,17 @@ export async function getAllActivitiesByProjectionDate() {
 export async function getAllInvitesSortedByName() {
     await superAuth();
     const records = await pb.collection("Invite").getFullList({ sort: "nom", filter: "role = 'acteur' || role = 'production'" });
+    records.photo = pb.files.getURL(records, records.photo);
     pb.authStore.clear();
     return records;
 }
 
 export async function getFilmById(id) {
     await superAuth();
-    const record = await pb.collection("Film").getOne(id);
+    const record = await pb.collection("Film").getOne(id, { expand: "invite" });
     record.affiche = pb.files.getURL(record, record.affiche);
+    record.expand.invite.photo = pb.files.getURL(record.expand.invite, record.expand.invite.photo);
+    record.photosupp = pb.files.getURL(record, record.photosupp);
     pb.authStore.clear();
     return record;
 }
@@ -54,6 +57,7 @@ export async function getActiviteById(id) {
 export async function getInvitesById(id) {
     await superAuth();
     const records = await pb.collection("Invite").getOne(id);
+    records.photo = pb.files.getURL(records, records.photo);
     pb.authStore.clear();
     return records;
 }

@@ -1,12 +1,133 @@
 ---
 import CardFilm from "./CardFilm.astro";
+import element_fleche_droite from "../assets/svg/element_fleche_droite.svg";
 
 const props = Astro.props;
 const films = props.films;
 ---
 
 <div
-    class="flex w-full overflow-x-scroll gap-4 justify-center items-center min-h-screen"
+    class="flex flex-col justify-center items-center gap-6 max-w-screen-xl mx-auto px-4 py-8"
 >
-    {films.map((film: any) => <CardFilm film={film} />)}
+    <div class="relative w-full">
+        <!-- Container du carrousel avec ombre portée et arrondis -->
+        <div
+            id="carousel"
+            class="flex gap-4 md:gap-8 py-6 overflow-x-scroll scroll-smooth snap-x snap-mandatory no-scrollbar rounded-xl"
+        >
+            {
+                films.map((film: any) => (
+                    <div class="snap-center flex-shrink-0 transition-transform duration-300 hover:scale-105 w-64 md:w-72">
+                        <CardFilm film={film} />
+                    </div>
+                ))
+            }
+        </div>
+
+        <!-- Flèches de navigation sur les côtés du carrousel en version desktop -->
+        <button
+            id="prevLarge"
+            class="flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 items-center justify-center w-12 h-12 rounded-full bg-white shadow-lg text-white hover:bg-white transition-all z-10"
+        >
+            <img
+                src={element_fleche_droite.src}
+                alt="fleche gauche"
+                class="w-6 h-6 rotate-180"
+            />
+        </button>
+        <button
+            id="nextLarge"
+            class="flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 items-center justify-center w-12 h-12 rounded-full bg-white shadow-lg text-gray-800 hover:bg-white transition-all z-10"
+        >
+            <img
+                src={element_fleche_droite.src}
+                alt="fleche droite"
+                class="w-6 h-6"
+            />
+        </button>
+    </div>
+
+    <!-- Flèches de navigation en bas pour mobile -->
 </div>
+
+<style>
+    /* Cacher la barre de défilement tout en permettant le défilement */
+    .no-scrollbar {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+    .no-scrollbar::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const carousel = document.getElementById("carousel");
+        const prev = document.getElementById("prev");
+        const next = document.getElementById("next");
+        const prevLarge = document.getElementById("prevLarge");
+        const nextLarge = document.getElementById("nextLarge");
+
+        if (!carousel) return;
+
+        function getScrollAmount() {
+            const card = carousel.querySelector(".snap-center");
+            if (!card) return 300; // Valeur par défaut si aucun élément trouvé
+            const gap = parseInt(window.getComputedStyle(carousel).gap) || 0;
+            return (card as HTMLElement).offsetWidth + gap;
+        }
+
+        function updateScrollMax() {
+            return carousel.scrollWidth - carousel.clientWidth;
+        }
+
+        function scrollPrev() {
+            let scrollAmount = getScrollAmount();
+            carousel.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+        }
+
+        function scrollNext() {
+            let scrollAmount = getScrollAmount();
+            let scrollMax = updateScrollMax();
+            let newScrollLeft = carousel.scrollLeft + scrollAmount;
+
+            if (newScrollLeft > scrollMax) {
+                newScrollLeft = scrollMax;
+            }
+
+            carousel.scrollBy({ left: scrollAmount, behavior: "smooth" });
+        }
+
+        // Attacher les événements aux boutons
+        if (prev) prev.addEventListener("click", scrollPrev);
+        if (next) next.addEventListener("click", scrollNext);
+        if (prevLarge) prevLarge.addEventListener("click", scrollPrev);
+        if (nextLarge) nextLarge.addEventListener("click", scrollNext);
+
+        // Gestion du focus sur le carrousel
+        carousel.addEventListener("mouseenter", () => {
+            if (prevLarge) prevLarge.classList.replace("hidden", "flex");
+            if (nextLarge) nextLarge.classList.replace("hidden", "flex");
+        });
+
+        carousel.addEventListener("mouseleave", () => {
+            if (window.innerWidth >= 768) {
+                // seulement sur desktop
+                if (prevLarge) prevLarge.classList.replace("flex", "hidden");
+                if (nextLarge) nextLarge.classList.replace("flex", "hidden");
+            }
+        });
+
+        // Vérifier si on est à la fin ou au début pour désactiver les boutons correspondants
+        carousel.addEventListener("scroll", () => {
+            const isAtStart = carousel.scrollLeft === 0;
+            const isAtEnd = carousel.scrollLeft >= updateScrollMax() - 10;
+
+            if (prev) prev.classList.toggle("opacity-50", isAtStart);
+            if (prevLarge) prevLarge.classList.toggle("opacity-50", isAtStart);
+            if (next) next.classList.toggle("opacity-50", isAtEnd);
+            if (nextLarge) nextLarge.classList.toggle("opacity-50", isAtEnd);
+        });
+    });
+</script>

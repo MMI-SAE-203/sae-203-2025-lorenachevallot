@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { getAllInvitesSortedByName } from "../../backend/backend.mjs";
 import CardInvite from "../components/CardInvite.astro";
+import { getAllInvitesSortedByName } from "../../backend/backend.mjs";
 
 const hero = {
     title: "Invités",
@@ -10,6 +10,8 @@ const hero = {
 let invites = await getAllInvitesSortedByName();
 ---
 
-<Layout hero={hero}
-<CardInvite invites={invites} />
-> </Layout>
+<Layout hero={hero}>
+    <div class="flex flex-col gap-4 items-center">
+        {invites.map((invite) => <CardInvite invites={invite} />)}
+    </div>
+</Layout>

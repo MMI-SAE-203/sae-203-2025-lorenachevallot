@@ -7,56 +7,96 @@ import Logo from "../assets/svg/element_logo_initial.svg";
 ---
 
 <footer class="bg-black text-white py-10 px-6 md:px-12">
-    <div class="flex justify-start mb-6">
-        <img src={Logo.src} alt="logo cinemagny" class="w-12 md:w-16" />
+    <div class="max-w-7xl mx-auto">
+        <div class="mb-6">
+            <img src={Logo.src} alt="logo cinemagny" class="w-12 md:w-16" />
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-8">
+            <div class="space-y-8">
+                <div>
+                    <h3 class="text-lg font-semibold text-(--color-blue) mb-4">
+                        Contact
+                    </h3>
+                    <ul class="space-y-2 text-sm font-thin">
+                        <li>Email : contact@cinemagny.com</li>
+                        <li>Téléphone : +33 3 00 00 00 00</li>
+                        <li>
+                            Adresse : Théâtre du Pilier, 90200 Giromagny, France
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold text-(--color-blue) mb-4">
+                        Mentions légales
+                    </h3>
+                    <ul class="text-sm font-thin space-y-2">
+                        <li>Politique de confidentialité</li>
+                        <li>Conditions générales d'utilisation</li>
+                        <li>Cookies</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="hidden md:block w-[1px] bg-(--color-blue)"></div>
+
+            <div class="space-y-8">
+                <div>
+                    <h3 class="text-lg font-semibold text-(--color-blue) mb-4">
+                        Inscription à la Newsletter
+                    </h3>
+                    <p class="text-sm font-thin">
+                        Recevez les dernières nouvelles du festival CINEMAGNY,
+                        des informations exclusives et des offres spéciales.
+                    </p>
+                    <button
+                        class="border border-(--color-blue) text-(--color-blue)
+                   py-2 px-6 text-sm uppercase hover:bg-[--color-blue]
+                   hover:text-white transition text-md my-4 block
+                   font-thin max-w-xs"
+                    >
+                        S'inscrire à la newsletter
+                    </button>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold text-(--color-blue) mb-4">
+                        Nous suivre
+                    </h3>
+                    <ul class="flex space-x-4">
+                        <li>
+                            <img
+                                src={Logoinsta.src}
+                                alt="logo instagram"
+                                class="w-6 invert"
+                            />
+                        </li>
+                        <li>
+                            <img
+                                src={Logofacebook.src}
+                                alt="logo facebook"
+                                class="w-6 invert"
+                            />
+                        </li>
+                        <li>
+                            <img
+                                src={Logotwitter.src}
+                                alt="logo twitter"
+                                class="w-6 invert"
+                            />
+                        </li>
+                        <li>
+                            <img
+                                src={Logoytb.src}
+                                alt="logo youtube"
+                                class="w-6 invert"
+                            />
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Fin grid -->
     </div>
-
-    <h3 class="text-lg font-semibold text-(--color-blue) mb-4">Contact</h3>
-    <ul class="space-y-2 text-sm font-thin">
-        <li>Email : contact@cinemagny.com</li>
-        <li>Téléphone : +33 3 00 00 00 00</li>
-        <li>Adresse : Théâtre du Pilier, 90200 Giromagny, France</li>
-    </ul>
-
-    <h3 class="text-lg font-semibold text-(--color-blue) mt-8 mb-4">
-        Nous suivre
-    </h3>
-    <ul class="flex justify-start self-start space-x-4">
-        <li>
-            <img src={Logoinsta.src} alt="logo instagram" class="w-6 invert" />
-        </li>
-        <li>
-            <img
-                src={Logofacebook.src}
-                alt="logo facebook"
-                class="w-6 invert"
-            />
-        </li>
-        <li>
-            <img src={Logotwitter.src} alt="logo twitter" class="w-6 invert" />
-        </li>
-        <li><img src={Logoytb.src} alt="logo youtube" class="w-6 invert" /></li>
-    </ul>
-
-    <h3 class="text-lg font-semibold text-(--color-blue) mt-8 mb-4">
-        Inscription à la Newsletter
-    </h3>
-    <p class="text-sm font-thin">
-        Recevez les dernières nouvelles du festival CINEMAGNY, des informations
-        exclusives et des offres spéciales.
-    </p>
-    <button
-        class="w-full max-w-xs md:max-w-md border border-(--color-blue) text-(--color-blue) py-2 text-sm uppercase hover:bg-[--color-blue] hover:text-white transition text-md my-4 block font-thin"
-    >
-        S'inscrire à la newsletter
-    </button>
-
-    <h3 class="text-lg font-semibold text-(--color-blue) mt-8 mb-4">
-        Mentions légales
-    </h3>
-    <ul class="text-sm font-thin space-y-2">
-        <li>Politique de confidentialité</li>
-        <li>Conditions générales d'utilisation</li>
-        <li>Cookies</li>
-    </ul>
 </footer>

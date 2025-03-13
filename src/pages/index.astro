@@ -6,12 +6,14 @@ import imagerealisateurs from "../assets/webp/image_realisateurs.webp";
 import ButtonArrow from "../components/ButtonArrow.astro";
 import imagesensibilisation from "../assets/webp/image_sensibilisation.webp";
 import imgHero from "../assets/webp/image_paysage_header.webp";
+import imgHeroLg from "../assets/webp/image_paysage.webp";
 
 const hero = {
 	title: "CINEMAGNY",
 	subtitle: "Le cinéma réinventé, au cœur de la nature",
 	button: "Du 12 au 15 novembre 2025",
 	imgHero: imgHero.src,
+	imgHeroLg: imgHeroLg.src,
 };
 ---
 
@@ -97,51 +99,69 @@ const hero = {
 			</Card>
 		</article>
 		<div class="relative inline-block text-left">
-    <!-- Bouton Filtrer -->
-    <button id="filter-btn" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition flex items-center gap-2">
-        Filtrer
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-        </svg>
-    </button>
+			<button
+				id="filter-btn"
+				class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition flex items-center gap-2"
+			>
+				Filtrer
+				<svg
+					class="w-4 h-4"
+					fill="none"
+					stroke="currentColor"
+					viewBox="0 0 24 24"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M19 9l-7 7-7-7"></path>
+				</svg>
+			</button>
 
-    <!-- Menu déroulant (caché par défaut) -->
-    <div id="filter-menu" class="absolute right-0 mt-2 w-48 bg-white border border-gray-300 shadow-lg rounded-md hidden">
-        <div class="p-2">
-            <!-- Filtrer par Genre -->
-            <label class="block text-sm font-medium text-gray-700">Genre</label>
-            <select class="w-full p-2 border rounded-md">
-                <option value="">Tous</option>
-                <option value="action">Action</option>
-                <option value="drama">Drame</option>
-                <option value="comedy">Comédie</option>
-            </select>
-        </div>
+			<div
+				id="filter-menu"
+				class="absolute right-0 mt-2 w-48 bg-white border border-gray-300 shadow-lg rounded-md hidden"
+			>
+				<div class="p-2">
+					<label class="block text-sm font-medium text-gray-700"
+						>Genre</label
+					>
+					<select class="w-full p-2 border rounded-md">
+						<option value="">Tous</option>
+						<option value="action">Action</option>
+						<option value="drama">Drame</option>
+						<option value="comedy">Comédie</option>
+					</select>
+				</div>
 
-        <div class="p-2">
-            <!-- Filtrer par Date -->
-            <label class="block text-sm font-medium text-gray-700">Date</label>
-            <input type="date" class="w-full p-2 border rounded-md" />
-        </div>
+				<div class="p-2">
+					<label class="block text-sm font-medium text-gray-700"
+						>Date</label
+					>
+					<input type="date" class="w-full p-2 border rounded-md" />
+				</div>
 
-        <div class="p-2">
-            <!-- Filtrer par Langue -->
-            <label class="block text-sm font-medium text-gray-700">Langue</label>
-            <select class="w-full p-2 border rounded-md">
-                <option value="">Toutes</option>
-                <option value="fr">Français</option>
-                <option value="en">Anglais</option>
-                <option value="es">Espagnol</option>
-            </select>
-        </div>
+				<div class="p-2">
+					<label class="block text-sm font-medium text-gray-700"
+						>Langue</label
+					>
+					<select class="w-full p-2 border rounded-md">
+						<option value="">Toutes</option>
+						<option value="fr">Français</option>
+						<option value="en">Anglais</option>
+						<option value="es">Espagnol</option>
+					</select>
+				</div>
 
-        <!-- Bouton Appliquer -->
-        <div class="p-2 border-t">
-            <button class="w-full px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition">
-                Appliquer
-            </button>
-        </div>
-    </div>
-</div>
+				<div class="p-2 border-t">
+					<button
+						class="w-full px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition"
+					>
+						Appliquer
+					</button>
+				</div>
+			</div>
+		</div>
 	</article></Layout
 >
