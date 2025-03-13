@@ -1,0 +1,21 @@
+---
+import Caroussel from "../../components/Caroussel.astro";
+import Layout from "../../layouts/Layout.astro";
+import { getAllFilmsByProjectionDate } from "../../../backend/backend.mjs";
+import SelectGenre from "../../components/selectGenre.astro";
+
+const hero = {
+    title: "Programmation",
+};
+
+let films = await getAllFilmsByProjectionDate();
+let selecteur = {
+    Collection: "film",
+    
+}
+---
+
+<Layout hero={hero}>
+    <Caroussel films={films} />
+    <SelectGenre selecteur={selecteur} />
+</Layout>

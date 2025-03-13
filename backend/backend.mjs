@@ -101,3 +101,10 @@ export function formatDate(date) {
 
     return { date: dateString, heure: timeString };
 }
+
+export async function getCollection(collection) {
+    await superAuth();
+    const records = await pb.collection(collection).getFullList();
+    pb.authStore.clear();
+    return records;
+}

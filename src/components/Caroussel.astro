@@ -10,7 +10,6 @@ const films = props.films;
     class="flex flex-col justify-center items-center gap-6 max-w-screen-xl mx-auto px-4 py-8"
 >
     <div class="relative w-full">
-        <!-- Container du carrousel avec ombre portée et arrondis -->
         <div
             id="carousel"
             class="flex gap-4 md:gap-8 py-6 overflow-x-scroll scroll-smooth snap-x snap-mandatory no-scrollbar rounded-xl"
@@ -24,7 +23,6 @@ const films = props.films;
             }
         </div>
 
-        <!-- Flèches de navigation sur les côtés du carrousel en version desktop -->
         <button
             id="prevLarge"
             class="flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 items-center justify-center w-12 h-12 rounded-full bg-white shadow-lg text-white hover:bg-white transition-all z-10"
@@ -47,17 +45,15 @@ const films = props.films;
         </button>
     </div>
 
-    <!-- Flèches de navigation en bas pour mobile -->
 </div>
 
 <style>
-    /* Cacher la barre de défilement tout en permettant le défilement */
     .no-scrollbar {
-        -ms-overflow-style: none; /* IE and Edge */
-        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; 
+        scrollbar-width: none; 
     }
     .no-scrollbar::-webkit-scrollbar {
-        display: none; /* Chrome, Safari, Opera */
+        display: none; 
     }
 </style>
 
@@ -73,7 +69,7 @@ const films = props.films;
 
         function getScrollAmount() {
             const card = carousel.querySelector(".snap-center");
-            if (!card) return 300; // Valeur par défaut si aucun élément trouvé
+            if (!card) return 300;
             const gap = parseInt(window.getComputedStyle(carousel).gap) || 0;
             return (card as HTMLElement).offsetWidth + gap;
         }
@@ -99,13 +95,12 @@ const films = props.films;
             carousel.scrollBy({ left: scrollAmount, behavior: "smooth" });
         }
 
-        // Attacher les événements aux boutons
+        
         if (prev) prev.addEventListener("click", scrollPrev);
         if (next) next.addEventListener("click", scrollNext);
         if (prevLarge) prevLarge.addEventListener("click", scrollPrev);
         if (nextLarge) nextLarge.addEventListener("click", scrollNext);
 
-        // Gestion du focus sur le carrousel
         carousel.addEventListener("mouseenter", () => {
             if (prevLarge) prevLarge.classList.replace("hidden", "flex");
             if (nextLarge) nextLarge.classList.replace("hidden", "flex");
@@ -113,13 +108,11 @@ const films = props.films;
 
         carousel.addEventListener("mouseleave", () => {
             if (window.innerWidth >= 768) {
-                // seulement sur desktop
                 if (prevLarge) prevLarge.classList.replace("flex", "hidden");
                 if (nextLarge) nextLarge.classList.replace("flex", "hidden");
             }
         });
 
-        // Vérifier si on est à la fin ou au début pour désactiver les boutons correspondants
         carousel.addEventListener("scroll", () => {
             const isAtStart = carousel.scrollLeft === 0;
             const isAtEnd = carousel.scrollLeft >= updateScrollMax() - 10;

@@ -1,0 +1,31 @@
+---
+import { getCollection } from "../../backend/backend.mjs";
+let films = await getCollection();
+---
+
+<div>
+    <select
+        name="genre"
+        id="genre"
+        class="py-2 px-4 border-b border-(--color-green) focus:outline-[0.5px] focus:border-(--color-green) focus:ring-0 focus:rounded-lg w-full"
+    >
+        <option value="">Tous les genres</option>
+        {
+            films
+                .map((film) => film.genre[0])
+                .concat(films.map((film) => film.genre[1]))
+                .filter(
+                    (genre, index, self) =>
+                        genre && self.indexOf(genre) === index,
+                )
+                .map((genre) => <option value={genre}>{genre}</option>)
+        }
+    </select>
+</div>
+
+<script>
+    document.getElementById("genre")?.addEventListener("change", (e) => {
+        let genre = (e.target as HTMLSelectElement)?.value;
+        window.location.href = `/programmation/${genre}`;
+    });
+</script>

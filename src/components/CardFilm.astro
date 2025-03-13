@@ -7,13 +7,12 @@ let dateHeure = formatDate(film.date_projection);
 ---
 
 <div
-    class="bg-white shadow-lg rounded-xl overflow-hidden max-w-[250px] lg:max-w-[300px] h-[580px] flex flex-col snap-center flex-shrink-0 transition-all duration-300 hover:shadow-xl relative"
+    class="bg-white shadow-lg rounded-xl overflow-hidden max-w-[250px] lg:max-w-[300px] h-[580px] max-h-[580px] flex flex-col snap-center flex-shrink-0 transition-all duration-300 hover:shadow-xl relative"
 >
-    <!-- Image avec overlay au survol - hauteur augmentée pour images plus grandes -->
-    <a href={`/film/${film.id}`} class="block h-[70%] w-full">
+    <a href={`/film/${film.id}`} class="block h-[60%] w-full">
         <div class="relative overflow-hidden w-full h-full group">
             <img
-                class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 p-2"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 p-2"
                 src={film.affiche}
                 alt={`Affiche de ${film.titre}`}
             />
@@ -25,14 +24,12 @@ let dateHeure = formatDate(film.date_projection);
     </a>
 
     <a href={`/film/${film.id}`} class="block flex-1">
-        <div class="p-4 h-full flex flex-col">
-            <!-- Titre avec style amélioré -->
-            <h3 class="(--font-serif) text-xl font-bold text-gray-900 mb-2">
+        <div class="px-4 h-full flex flex-col">
+            <h3 class="(--font-serif) text-xl font-bold text-gray-900 py-0">
                 {film.titre}
             </h3>
 
-            <!-- Informations de date et heure avec meilleur contraste -->
-            <div class="flex gap-3 mb-3 text-black">
+            <div class="flex gap-3 text-black">
                 <div>
                     <span class="text-sm font-medium">{dateHeure.date}</span>
                 </div>
