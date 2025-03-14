@@ -17,7 +17,7 @@ const hero = {
 };
 ---
 
-<Layout hero={hero}>
+<Layout hero={hero} title="CINEMAGNY">
 	<article class="flex-col gap-10 flex items-center justify-center">
 		<div class="w-full pr-16">
 			<h3 class="md:text-2xl font-bold leading-tight mb-4">
@@ -33,7 +33,8 @@ const hero = {
 				billets dès aujourd'hui pour ne rien manquer!
 			</p>
 		</div>
-		<ButtonPrincipal>billetterie</ButtonPrincipal>
+		<ButtonPrincipal><a href="/billetterie">billetterie</a></ButtonPrincipal
+		>
 		<article>
 			<Card
 				><h2 slot="title">Une Programmation Riche et Originale</h2>
@@ -99,8 +100,6 @@ const hero = {
 			</Card>
 		</article>
 		<div class="relative inline-block text-left">
-			
-
 			<div
 				id="filter-menu"
 				class="absolute right-0 mt-2 w-48 bg-white border border-gray-300 shadow-lg rounded-md hidden"

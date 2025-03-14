@@ -12,7 +12,7 @@ const hero = {
 let films = await getAllFilmsByProjectionDate();
 ---
 
-<Layout hero={hero}>
+<Layout hero={hero} title="Programmation">
     <div class="flex flex-col md:flex-row gap-4 w-full">
         <SelectGenre films={films} />
         <SelectDate films={films} />

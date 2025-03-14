@@ -41,14 +41,14 @@ import Rechercher from "../assets/svg/element_loupe.svg";
                 >
                     Programmation
                     <span
-                        class="underline-animation absolute bottom-2 left-0 h-1 w-full transform translate-y-4 bg-white transition-all duration-300 ease-in-out hover:translate-y-0"
+                        class="underline-animation absolute bottom-2 left-0 h-1 w-full transform translate-y-4 bg-white transition-all duration-300 ease-in-out group-hover:translate-y-0"
                     ></span>
                 </a>
                 <div
-                    class="dropdown-wrapper absolute top-full left-0 pt-2 overflow-hidden max-h-0 group-hover:max-h-40 transition-all duration-300 ease-in-out"
+                    class="dropdown-wrapper lg:absolute lg:top-full lg:left-0 lg:pt-2 lg:overflow-hidden lg:max-h-0 lg:group-hover:max-h-40 lg:transition-all lg:duration-300 lg:ease-in-out"
                 >
                     <ul
-                        class="dropdown-content bg-black py-2 px-4 min-w-max z-30 origin-top transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-in-out"
+                        class="dropdown-content lg:bg-black pb-6 pt-2 lg:py-2 lg:px-4 lg:min-w-max z-30 lg:origin-top lg:transform lg:scale-y-0 lg:group-hover:scale-y-100 lg:transition-transform duration-300 ease-in-out"
                     >
                         <li class="py-1">
                             <a
@@ -60,6 +60,7 @@ import Rechercher from "../assets/svg/element_loupe.svg";
                     </ul>
                 </div>
             </li>
+
             <li class="relative overflow-visible">
                 <a
                     href="/billetterie"
@@ -82,10 +83,10 @@ import Rechercher from "../assets/svg/element_loupe.svg";
                     ></span>
                 </a>
                 <div
-                    class="dropdown-wrapper absolute top-full left-0 pt-2 overflow-hidden max-h-0 group-hover:max-h-40 transition-all duration-300 ease-in-out"
+                    class="dropdown-wrapper lg:absolute lg:top-full lg:left-0 lg:pt-2 lg:overflow-hidden lg:max-h-0 lg:group-hover:max-h-40 lg:transition-all lg:duration-300 lg:ease-in-out"
                 >
                     <ul
-                        class="dropdown-content bg-black py-2 px-4 min-w-max z-30 origin-top transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-in-out"
+                        class="dropdown-content lg:bg-black pb-6 pt-2 lg:py-2 lg:px-4 lg:min-w-max z-30 lg:origin-top lg:transform lg:scale-y-0 lg:group-hover:scale-y-100 lg:transition-transform lg:duration-300 lg:ease-in-out"
                     >
                         <li class="py-1">
                             <a
@@ -119,10 +120,10 @@ import Rechercher from "../assets/svg/element_loupe.svg";
                     ></span>
                 </a>
                 <div
-                    class="dropdown-wrapper absolute top-full left-0 pt-2 overflow-hidden max-h-0 group-hover:max-h-40 transition-all duration-300 ease-in-out"
+                    class="dropdown-wrapper lg:absolute lg:top-full lg:left-0 lg:pt-2 lg:overflow-hidden lg:max-h-0 lg:group-hover:max-h-40 lg:transition-all lg:duration-300 lg:ease-in-out"
                 >
                     <ul
-                        class="dropdown-content bg-black py-2 px-4 min-w-max z-30 origin-top transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-in-out"
+                        class="dropdown-content lg:bg-black pb-6 pt-2 lg:py-2 lg:px-4 lg:min-w-max z-30 lg:origin-top lg:transform lg:scale-y-0 lg:group-hover:scale-y-100 lg:transition-transform lg:duration-300 lg:ease-in-out"
                     >
                         <li class="py-1">
                             <a
@@ -154,31 +155,6 @@ import Rechercher from "../assets/svg/element_loupe.svg";
             nav.ariaHidden = String(isOpen);
             page.classList.toggle("noscroll", isClosed);
             header?.classList.toggle("black", isClosed);
-        });
-    }
-
-    if (window.innerWidth < 1024) {
-        dropdownToggles.forEach((toggle) => {
-            toggle.addEventListener("click", (e) => {
-                if (window.innerWidth < 1024) {
-                    e.preventDefault();
-                    const wrapper = toggle.nextElementSibling;
-                    const content = wrapper.querySelector(".dropdown-content");
-                    const underline = toggle.querySelector(
-                        ".underline-animation",
-                    );
-
-                    if (wrapper.style.maxHeight) {
-                        wrapper.style.maxHeight = null;
-                        content.style.transform = "scaleY(0)";
-                        underline.style.transform = "translateY(4px)";
-                    } else {
-                        wrapper.style.maxHeight = wrapper.scrollHeight + "px";
-                        content.style.transform = "scaleY(1)";
-                        underline.style.transform = "translateY(0)";
-                    }
-                }
-            });
         });
     }
 </script>
