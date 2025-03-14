@@ -1,0 +1,136 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Blablacar from "../assets/webp/logo_blablacar.webp";
+import Abritel from "../assets/webp/logo_abritel.webp";
+import Booking from "../assets/webp/logo_booking.webp";
+import Tripadvasor from "../assets/webp/logo_tripadvisor.webp";
+import Optymo from "../assets/webp/logo_optymo.webp";
+import Geographie from "../assets/webp/image_geographie.webp";
+import fleche from "../assets/svg/element_geo.svg";
+
+const hero = {
+    title: "Infos Pratiques",
+};
+---
+
+<Layout hero={hero} title="CINEMAGNY">
+    <main class="container mx-auto px-4 py-12 space-y-20 md:px-8 lg:px-12">
+        <article
+            class="rounded-xl p-8 bg-white flex flex-col lg:flex-row gap-8"
+        >
+            <div class="flex-1">
+                <h2 class="text-3xl font-bold mb-6">Transport</h2>
+                <p class="text-lg leading-relaxed">
+                    Le festival est facilement accessible en voiture, en train
+                    ou en bus. Nous encourageons les festivaliers à utiliser des
+                    transports écoresponsables, comme le covoiturage ou les
+                    transports en commun.<br /><br />
+                    <strong>- En voiture :</strong> Des parkings sont disponibles
+                    à proximité des lieux de projection.<br />
+                    <strong>- En train :</strong> La gare la plus proche est à Belfort,
+                    à seulement 13 km de Giromagny. Des navettes seront mises en
+                    place.<br />
+                    <strong>- Covoiturage :</strong> Un service de covoiturage sera
+                    organisé via notre partenaire local.<br /><br />
+                    Consultez notre section dédiée pour plus d'informations sur les
+                    options de transport.
+                </p>
+                <div class="flex flex-wrap gap-6 mt-8">
+                    <img
+                        src={Blablacar.src}
+                        alt="logo du site BlaBlaCar"
+                        class="rounded-xl object-contain lg:w-1/5 md:w-1/3 h-20 md:h-auto"
+                    />
+                    <img
+                        src={Optymo.src}
+                        alt="logo du site Optymo"
+                        class="rounded-xl object-contain md:w-1/3 lg:w-1/5 h-20 md:h-auto"
+                    />
+                </div>
+            </div>
+        </article>
+        <div class="flex-1">
+            <h2 class="text-3xl font-bold mb-6">Hébergement</h2>
+            <p class="text-lg leading-relaxed">
+                Giromagny et ses environs proposent plusieurs options
+                d'hébergement pour tous les budgets. Que vous préfériez un
+                hôtel, un gîte, ou un camping, vous trouverez des solutions
+                adaptées. Nous vous recommandons de réserver tôt, car les places
+                sont limitées pendant le festival.<br /><br />
+                <strong>Hôtels : </strong> Confortables et à proximité des lieux
+                du festival.
+                <br />
+                <strong>- Gîtes et Chambres d’hôtes :</strong> Pour une expérience
+                plus authentique dans la région.<br />
+                <strong>- Campings :</strong> Un service de covoiturage sera organisé
+                via notre partenaire local.<br /><br />
+
+                Quelques liens des plateformes de réservation afin de planifier
+                au mieux votre venue
+            </p>
+            <div class="flex flex-wrap gap-6 mt-8">
+                <img
+                    src={Abritel.src}
+                    alt="logo du site Abritel"
+                    class="rounded-xl object-contain lg:w-1/5 md:w-1/3 h-20 md:h-auto"
+                />
+                <img
+                    src={Tripadvasor.src}
+                    alt="logo du site Tripadvasor"
+                    class="rounded-xl object-contain md:w-1/3 lg:w-1/5 h-20 md:h-auto"
+                />
+                <img
+                    src={Booking.src}
+                    alt="logo du site Booking"
+                    class="rounded-xl object-contain md:w-1/3 lg:w-1/5 h-20 md:h-auto"
+                />
+            </div>
+        </div>
+    </main>
+
+    <article class="rounded-xl p-8 bg-white space-y-6">
+        <h2 class="text-3xl font-bold mb-6">Plan du festival</h2>
+        <article class="border rounded-xl shadow-lg overflow-hidden bg-white">
+            <div class="relative">
+                <img
+                    src={Geographie.src}
+                    alt="carte de la ville de Giromany"
+                    class="w-full object-cover"
+                />
+                <ul class="absolute inset-0 flex items-center justify-around">
+                    <li>
+                        <img
+                            src={fleche.src}
+                            alt="point sur la carte"
+                            class="h-8 w-8"
+                        />
+                    </li>
+                    <li class="">
+                        <img
+                            src={fleche.src}
+                            alt="deuxième point représentant là où se situe l'évènement"
+                            class="h-12 w-12"
+                        />
+                    </li>
+                    <li class="">
+                        <img
+                            src={fleche.src}
+                            alt="troisième point représentant là où se situe l'évènement"
+                            class="h-10 w-10"
+                        />
+                    </li>
+                </ul>
+            </div>
+        </article>
+        <p class="text-lg leading-relaxed">
+            Le festival se déroule dans plusieurs lieux à Giromagny, dont :<br
+            />
+            <strong>- Le Théâtre du Pilier :</strong> Salle principale pour les projections.<br
+            />
+            <strong>- Espace de la Tuilerie et Château de Giromagny :</strong> Événements
+            et ateliers.<br /><br />
+            Retrouvez tous les détails sur place grâce à un plan détaillé disponible
+            sur le site et sur les lieux du festival.
+        </p>
+    </article>
+</Layout>

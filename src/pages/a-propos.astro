@@ -1,0 +1,138 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nous from "..//assets/webp/image_amis.webp";
+import Sourires from "../assets/webp/image_sourires.webp";
+import Variete from "../assets/webp/image_varietes.webp";
+import Conference from "../assets/webp/image_explications.webp";
+import Tournage from "../assets/webp/image_tournage_vert.webp";
+import Initiation from "../assets/webp/image_initiation.webp";
+const hero = {
+    title: "A propos de nous",
+};
+---
+
+<Layout hero={hero} title="A propos de nous">
+    <main
+        class="container flex flex-col gap-12 md:16 lg:20 mx-auto px-4 py-12 space-y-20 md:px-8 lg:px-12"
+    >
+        <article
+            class="rounded-xl p-8 pacrounded-xl bg-white flex flex-col lg:flex-row lg:items-center gap-10e-y-6 md:flex md:space-y-0 md:space-x-8"
+        >
+            <div class="md:w-1/2">
+                <h2 class="text-3xl font-bold mb-6">Notre Histoire</h2>
+                <p class="text-lg leading-relaxed">
+                    Le Festival de Cinéma Indépendant de Giromagny est né en
+                    2010 de la passion d'un groupe de cinéphiles locaux désireux
+                    de partager leur amour pour le septième art. Face à
+                    l'absence d'événements cinématographiques dédiés au cinéma
+                    indépendant dans la région, ils ont uni leurs efforts pour
+                    créer ce rendez-vous. La première édition, réalisée avec des
+                    moyens modestes, a rencontré un succès encourageant,
+                    attirant un public curieux et enthousiaste. Au fil des
+                    années, le festival a gagné en notoriété, élargissant sa
+                    programmation et attirant des cinéastes de divers horizons.
+                    Grâce au soutien de la municipalité de Giromagny et de
+                    partenaires locaux, l'événement est devenu incontournable
+                    pour les amateurs de cinéma indépendant.
+                </p>
+            </div>
+            <img
+                src={Nous.src}
+                alt="image des fondateurs du festival"
+                class="rounded-xl shadow-lg w-full md:w-1/2 object-cover"
+            />
+        </article>
+
+        <article
+            class="rounded-xl p-8 bg-white flex flex-col lg:flex-row lg:items-center gap-10"
+        >
+            <img
+                src={Sourires.src}
+                alt="image de film, regards portés au loin"
+                class="rounded-xl shadow-md object-cover lg:w-1/2"
+            />
+            <div>
+                <h2 class="text-3xl font-bold mb-6">
+                    Un Festival pour le Cinéma Indépendant et Émergent
+                </h2>
+                <p class="text-lg leading-relaxed">
+                    Le Festival CINEMAGNY célèbre le cinéma indépendant et
+                    émergent. Situé à Giromagny, il propose une programmation
+                    diversifiée, mettant en avant des œuvres originales et
+                    souvent méconnues. CINEMAGNY est une plateforme de
+                    découverte et de rencontre, dédiée aux réalisateurs qui
+                    repoussent les limites du 7ᵉ art.
+                </p>
+            </div>
+        </article>
+
+        <article
+            class="rounded-xl p-8 bg-white flex flex-col lg:flex-row lg:items-center gap-10"
+        >
+            <img
+                src={Variete.src}
+                alt="salle de cinéma, affiches variées"
+                class="rounded-lg w-full lg:w-1/2"
+            />
+            <div class="lg:w-1/2">
+                <h2 class="text-3xl font-bold mb-4">
+                    Une Programmation Variée
+                </h2>
+                <p class="text-lg leading-relaxed">
+                    Le Festival CINEMAGNY célèbre le cinéma indépendant et
+                    émergent. Situé à Giromagny, il propose une programmation
+                    diversifiée, mettant en avant des œuvres originales et
+                    souvent méconnues. CINEMAGNY est une plateforme de
+                    découverte et de rencontre, dédiée aux réalisateurs qui
+                    repoussent les limites du 7ᵉ art.
+                </p>
+            </div>
+        </article>
+
+        <article class="rounded-xl p-8 bg-white">
+            <h2 class="text-3xl font-bold mb-6">Rencontres et Échanges</h2>
+            <img
+                src={Conference.src}
+                alt="conférence sur un film ou un réalisateur"
+                class="rounded-lg mb-6 w-full"
+            />
+            <p class="text-lg leading-relaxed">
+                CINEMAGNY organise des rencontres et échanges entre le public et
+                les réalisateurs. Des conférences et ateliers permettent aux
+                participants d'en apprendre davantage sur le processus créatif
+                et technique du cinéma. Les échanges lors des séances de Q&A
+                enrichissent l’expérience des festivaliers.
+            </p>
+        </article>
+
+        <article class="rounded-xl p-8 bg-white flex flex-col gap-10">
+            <h2 class="text-3xl font-bold">Engagement Écologique</h2>
+            <img
+                src={Tournage.src}
+                alt="tournage dans un milieu écologique"
+                class="rounded-xl w-full"
+            />
+            <p class="text-lg leading-relaxed">
+                CINEMAGNY est engagé pour l'environnement et adopte des
+                pratiques écoresponsables en privilégiant les matériaux
+                recyclés, en encourageant le covoiturage et en sensibilisant les
+                festivaliers à l'importance de la durabilité.
+            </p>
+        </article>
+
+        <article class="rounded-xl p-8 bg-white flex flex-col gap-8">
+            <h2 class="text-3xl font-bold">Éducation et Transmission</h2>
+            <img
+                src={Initiation.src}
+                alt="Initiation au matériel cinématographique"
+                class="rounded-lg"
+            />
+            <p class="text-lg leading-relaxed">
+                Le festival CINEMAGNY propose des ateliers éducatifs et des
+                séances d'initiation au cinéma, offrant aux jeunes talents des
+                opportunités d'apprentissage uniques à travers la pratique et
+                l'interaction directe avec des professionnels du secteur.
+            </p>
+        </article>
+    </main>
+</Layout>
